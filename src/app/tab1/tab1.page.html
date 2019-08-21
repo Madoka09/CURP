@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Personas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Jala para Actualizar" refreshingSpinner="circles"
+      refreshingText="Recargando...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngFor="let persona of personas">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <h3>{{persona.name}} {{persona.seconame}}</h3>
+        </ion-card-title>
+        <ion-card-subtitle>
+          <h4>{{persona.lastname}} {{persona.lastseconame}}</h4>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{persona.sexo}}</p>
+        <p>Fecha de Nacimiento: {{persona.nacimiento}}</p>
+        <p>Estado de Nacimiento: {{persona.estado}}</p>
+        <p>Puesto: {{persona.role}}</p>
+        <br>
+        <ion-button (click)="deletePersona(persona.id)" color="danger">Borrar</ion-button>
+        <ion-button (click)="presentModal(persona)" color="success">Editar</ion-button>
+        <ion-button (click)="generateId(persona)">Generar ID</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cargos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Jala para Actualizar" refreshingSpinner="circles"
+      refreshingText="Recargando...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngFor="let item of charges">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          {{item.clave}}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button (click)="delete(item.id)" color="danger">Borrar</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <br>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Añadir Cargo
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Cargo</ion-label>
+        <ion-input [(ngModel)]="clave.clave"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-button size="block" (click)="add()">Añadir Cargo</ion-button>
+  <ion-button size="block" color="danger" routerLink="/tabs/tab2">Volver</ion-button>
+</ion-content>

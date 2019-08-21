@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Agregar Persona
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Present</ion-label>
+        <ion-input type="text" value="Y" name="present" #present="ngModel" [(ngModel)]="persona.present" disabled
+          required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" name="name" #name="ngModel" [(ngModel)]="persona.name" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Segundo Nombre</ion-label>
+        <ion-input type="text" name="seconame" #seconame="ngModel" [(ngModel)]="persona.seconame" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input type="text" name="lastname" #lastname="ngModel" [(ngModel)]="persona.lastname" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Segundo Apellido</ion-label>
+        <ion-input type="text" name="lastseconame" #lastseconame="ngModel" [(ngModel)]="persona.lastseconame" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Sexo</ion-label>
+        <ion-select type="text" name="sexo" #sexo="ngModel" [(ngModel)]="persona.sexo" required>
+          <ion-select-option value="MASCULINO">Masculino</ion-select-option>
+          <ion-select-option value="FEMENINO">Femenino</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Cargo</ion-label>
+        <ion-select type="text" name="cargo" #cargo="ngModel" [(ngModel)]="persona.role" required>
+          <ion-select-option *ngFor="let item of charges">{{item.clave}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Estado</ion-label>
+        <ion-select type="text" name="estado" #estado="ngModel" [(ngModel)]="persona.estado" required>
+          <ion-select-option *ngFor="let estado of estados">{{estado.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Fecha de nacimiento</ion-label>
+        <ion-datetime cancelText="Cancelar" doneText="Insertar" displayFormat="YYYY-MM-DD" min="1950-03-14"
+          max="2019-12-09" name="nacimiento" #nacimiento="ngModel" [(ngModel)]="persona.nacimiento" required>
+        </ion-datetime>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <br>
+  <ion-button expand="block" (click)="onSubmit(contactSourceNew)" value="Guardar">Guardar</ion-button>
+  <ion-button expand="block" routerLink="/cargo" color="success" >Editar Cargos</ion-button>
+
+</ion-content>

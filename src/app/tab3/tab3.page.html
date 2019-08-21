@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Numeros de Identificación
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Jala para Actualizar" refreshingSpinner="circles"
+      refreshingText="Recargando...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngFor="let item of id">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <h3>{{item.clave}}</h3>
+        </ion-card-title>
+        <ion-card-subtitle>
+          <h4>{{item.nombre}} {{item.apellido}}</h4>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button color="danger" (click)="deleteId(item.id)">Borrar ID</ion-button>
+        <ion-button (click)="presentModal(item)">Ver Ubicación</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
